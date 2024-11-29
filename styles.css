@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --backGroundColor: rgb(9, 48, 117);
+  --redColor: rgb(242, 10, 10);
+  --whiteColor: #ffff;
+}
+body {
+  height: 100vh;
+  background-color: var(--backGroundColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+canvas {
+  border: 2px dashed var(--redColor);
+  background: rgb(7, 3, 78);
+  background: linear-gradient(
+    180deg,
+    rgba(7, 3, 78, 1) 22%,
+    rgba(28, 9, 186, 1) 51%,
+    rgba(23, 106, 184, 1) 74%,
+    rgba(2, 152, 196, 1) 90%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}

@@ -1,0 +1,29 @@
+
+Create Game Board Done
+BackGround Done
+Stars Done
+Snow  Done
+Start Viev Done
+Starting Game
+Starting New Game
+Pauza
+Lose
+Game Over Viev
+Player Movement
+Set Distance
+Reindeer Energy
+Bag of Gifts
+Droping Gifts
+Render Homes
+Giving and Missing Gifts
+Render Carots
+Render Gifts
+
+Take Rewards
+Render Hazard
+Grafics
+Audio
+
+
+
+

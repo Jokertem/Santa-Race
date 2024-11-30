@@ -1,4 +1,4 @@
-export const Start = (ctx, game, scores) => {
+export const Start = (ctx, game, scores, startButton) => {
   ctx.font = "50px Arial";
   ctx.fillStyle = "red";
   ctx.textAlign = "center";
@@ -19,13 +19,7 @@ export const Start = (ctx, game, scores) => {
       game.height / 2 + 50 - 65
     );
   }
-  const startButton = {
-    x: game.width / 2 - 95,
-    y: game.height / 2 + (100 - 65),
-    width: 200,
-    height: 50,
-    borderWidth: 3,
-  };
+
   ctx.fillStyle = "red";
   ctx.fillRect(
     startButton.x - startButton.borderWidth,
@@ -40,7 +34,19 @@ export const Start = (ctx, game, scores) => {
     startButton.width,
     startButton.height
   );
-  ctx.font = "26px Arial";
+
+  for (let index = 0; index < startButton.width; index += 20) {
+    ctx.beginPath();
+    ctx.moveTo(startButton.x + index, startButton.y);
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = "red";
+    ctx.lineTo(startButton.x + 20 + index, startButton.y + startButton.height);
+    ctx.lineCap = "round";
+    ctx.stroke();
+    ctx.closePath();
+  }
+
+  ctx.font = "30px Arial";
   ctx.fillStyle = "black";
   ctx.textAlign = "center";
 

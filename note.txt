@@ -4,9 +4,9 @@ BackGround Done
 Stars Done
 Snow  Done
 Start Viev Done
-Starting Game
+Starting Game Done
 Starting New Game
-Pauza
+Pauza Done
 Lose
 Game Over Viev
 Player Movement

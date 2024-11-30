@@ -7,8 +7,10 @@ export class Star {
     (this.x = x), (this.y = y);
     this.size = 48;
   }
-  move() {
-    this.x -= starSpeed;
+  move(game) {
+    if (!game.pauza) {
+      this.x -= starSpeed;
+    }
   }
   static render(game) {
     if (game.stars.length < max) {

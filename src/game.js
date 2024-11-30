@@ -1,6 +1,7 @@
 import { Star } from "./stars.js";
 import { Snow } from "./snow.js";
 import { Start } from "./start.js";
+import { SetEvents } from "./events.js";
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -18,7 +19,13 @@ const scores = {
   best: 20,
   last: null,
 };
-
+const startButton = {
+  x: game.width / 2 - 95,
+  y: game.height / 2 + (100 - 65),
+  width: 200,
+  height: 50,
+  borderWidth: 3,
+};
 const Snowflakes = () => {
   game.snow.forEach((snow) => {
     snow.fall();
@@ -29,7 +36,7 @@ const Snowflakes = () => {
 };
 const Stars = () => {
   game.stars.forEach((star, index) => {
-    star.move();
+    star.move(game);
   });
   Star.render(game);
   Star.draw(ctx, game);
@@ -37,11 +44,13 @@ const Stars = () => {
 };
 const Game = () => {
   ctx.clearRect(0, 0, ctx_Width, ctx_Height);
-  Stars();
   Snowflakes();
   if (!game.start) {
-    Start(ctx, game, scores);
+    Start(ctx, game, scores, startButton);
+  } else {
+    Stars();
   }
   requestAnimationFrame(Game);
 };
 Game();
+SetEvents(canvas, ctx, game, scores, startButton);

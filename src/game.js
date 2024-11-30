@@ -2,6 +2,10 @@ import { Star } from "./stars.js";
 import { Snow } from "./snow.js";
 import { Start } from "./start.js";
 import { SetEvents } from "./events.js";
+import { Player } from "./player.js";
+import { GetInfo } from "./gameinfo.js";
+import { Carrots } from "./carrots.js";
+import { Gift } from "./gift.js";
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -14,6 +18,9 @@ const game = {
   pauza: false,
   stars: [],
   snow: [],
+  carrots: [],
+  gifts: [],
+  player: new Player(),
 };
 const scores = {
   best: 20,
@@ -42,6 +49,29 @@ const Stars = () => {
   Star.draw(ctx, game);
   Star.remove(game);
 };
+const Santa = () => {
+  game.player.moves(game);
+  game.player.draw(ctx);
+};
+
+game.player.increaseDistance(game);
+game.player.decreaseEnergy(game);
+const _Carrots = () => {
+  Carrots.render(game);
+  Carrots.remove(game);
+  game.carrots.forEach((carrot) => {
+    carrot.move(game);
+    carrot.draw(ctx);
+  });
+};
+const Gifts = () => {
+  Gift.render(game);
+  Gift.remove(game);
+  game.gifts.forEach((gift) => {
+    gift.move(game);
+    gift.draw(ctx);
+  });
+};
 const Game = () => {
   ctx.clearRect(0, 0, ctx_Width, ctx_Height);
   Snowflakes();
@@ -49,6 +79,10 @@ const Game = () => {
     Start(ctx, game, scores, startButton);
   } else {
     Stars();
+    Santa();
+    _Carrots();
+    Gifts();
+    GetInfo(game, ctx);
   }
   requestAnimationFrame(Game);
 };

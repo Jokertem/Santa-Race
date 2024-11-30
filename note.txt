@@ -7,20 +7,24 @@ Start Viev Done
 Starting Game Done
 Starting New Game
 Pauza Done
-Lose
+Losing
 Game Over Viev
-Player Movement
-Set Distance
-Reindeer Energy
+Player Movement Done
+Set Distance Done
+Reindeer Energy Done
+Render Gifts Done
 Bag of Gifts
 Droping Gifts
 Render Homes
+Droping Gifts
 Giving and Missing Gifts
-Render Carots
-Render Gifts
-
-Take Rewards
+Render Carots Done
+Stars Counter Done
+Take Carrots Done
+Take Gifts
 Render Hazard
+Calculate Final Points
+Save Best Score(local storage)
 Grafics
 Audio
 

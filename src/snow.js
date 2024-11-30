@@ -1,5 +1,5 @@
 const speed = 10;
-const max = 60;
+const max = 500;
 export class Snow {
   constructor(x, y) {
     this.x = x;

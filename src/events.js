@@ -1,10 +1,9 @@
 export const SetEvents = (canvas, ctx, game, scores, startButton) => {
-  const GetPauza = () => {
+  const SetPauza = () => {
     if (!game.start) {
       return;
     }
     game.pauza = !game.pauza;
-    console.log(game.pauza);
   };
 
   //Starting Game
@@ -30,13 +29,48 @@ export const SetEvents = (canvas, ctx, game, scores, startButton) => {
       return;
     }
   });
-  //Keybord events
+  //Keybord down events
   window.addEventListener("keydown", (e) => {
     const key = e.keyCode;
     console.log(key);
     switch (key) {
       case 80:
-        GetPauza();
+        SetPauza();
+        break;
+      case 13:
+        game.start = true;
+        break;
+      case 38:
+        game.player.up = true;
+        break;
+      case 40:
+        game.player.down = true;
+        break;
+      case 37:
+        game.player.left = true;
+        break;
+      case 39:
+        game.player.right = true;
+        break;
+      default:
+        break;
+    }
+  });
+  window.addEventListener("keyup", (e) => {
+    const key = e.keyCode;
+    console.log(key);
+    switch (key) {
+      case 38:
+        game.player.up = false;
+        break;
+      case 40:
+        game.player.down = false;
+        break;
+      case 37:
+        game.player.left = false;
+        break;
+      case 39:
+        game.player.right = false;
         break;
 
       default:

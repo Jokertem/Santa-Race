@@ -1,3 +1,4 @@
+import { Gift } from "./gift.js";
 export class Player {
   constructor() {
     this.x = 160;
@@ -13,8 +14,8 @@ export class Player {
     this.distance = 0;
     this.energy = 100;
     this.bag = 5;
-    this.gifts_distributed;
-    this.gifts_thrown;
+    this.gifts_distributed = 0;
+    this.gifts_thrown = 0;
   }
   moves(game) {
     if (!game.pauza) {
@@ -56,6 +57,18 @@ export class Player {
         this.energy--;
       }
     }, 400);
+  }
+  drop(game) {
+    if (!game.start || game.pauza || this.bag <= 0) {
+      return;
+    }
+    const gift = new Gift(
+      this.x + this.width / 2 - 32 / 2,
+      this.y + this.height,
+      "droped"
+    );
+    game.gifts.push(gift);
+    this.bag--;
   }
 
   draw(ctx) {

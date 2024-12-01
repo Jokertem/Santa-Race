@@ -9,7 +9,7 @@ export class Carrots {
     if (rnd < 0.05 && game.carrots.length === 0) {
       const rndY = Math.floor(Math.random() * game.height);
       if (rndY + size >= game.height) {
-        rndY - size;
+        rndY - size * 2;
       }
       const carrot = new Carrots(game.width + size, rndY);
       game.carrots.push(carrot);

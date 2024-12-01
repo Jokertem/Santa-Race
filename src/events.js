@@ -1,3 +1,4 @@
+import { Player } from "./player.js";
 export const SetEvents = (canvas, ctx, game, scores, startButton) => {
   const SetPauza = () => {
     if (!game.start) {
@@ -51,6 +52,9 @@ export const SetEvents = (canvas, ctx, game, scores, startButton) => {
         break;
       case 39:
         game.player.right = true;
+        break;
+      case 32:
+        game.player.drop(game);
         break;
       default:
         break;

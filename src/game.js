@@ -6,6 +6,7 @@ import { Player } from "./player.js";
 import { GetInfo } from "./gameinfo.js";
 import { Carrots } from "./carrots.js";
 import { Gift } from "./gift.js";
+import { Home } from "./home.js";
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -20,7 +21,9 @@ const game = {
   snow: [],
   carrots: [],
   gifts: [],
+  homes: [],
   player: new Player(),
+  giftColor: Math.floor(Math.random() * 5 + 1),
 };
 const scores = {
   best: 20,
@@ -72,6 +75,12 @@ const Gifts = () => {
     gift.draw(ctx);
   });
 };
+const Homes = () => {
+  Home.render(game);
+  game.homes.forEach((home) => {
+    home.draw(game, ctx);
+  });
+};
 const Game = () => {
   ctx.clearRect(0, 0, ctx_Width, ctx_Height);
   Snowflakes();
@@ -82,6 +91,7 @@ const Game = () => {
     Santa();
     _Carrots();
     Gifts();
+    Homes();
     GetInfo(game, ctx);
   }
   requestAnimationFrame(Game);

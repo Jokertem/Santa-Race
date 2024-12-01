@@ -13,15 +13,16 @@ Player Movement Done
 Set Distance Done
 Reindeer Energy Done
 Render Gifts Done
-Bag of Gifts
-Droping Gifts
+Bag of Gifts Done
+Droping Gifts Done
 Render Homes
-Droping Gifts
-Giving and Missing Gifts
+Droping Gifts Done
+Giving Gifts
+Missing Gifts Done
 Render Carots Done
 Stars Counter Done
 Take Carrots Done
-Take Gifts
+Take Gifts Done
 Render Hazard
 Calculate Final Points
 Save Best Score(local storage)

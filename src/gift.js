@@ -5,11 +5,11 @@ const gift2 = new Image();
 const gift3 = new Image();
 const gift4 = new Image();
 const gift5 = new Image();
-gift1.src = "asstets/giftbox1.png";
-gift2.src = "asstets/giftbox2.png";
-gift3.src = "asstets/giftbox3.png";
-gift4.src = "asstets/giftbox4.png";
-gift5.src = "asstets/giftbox5.png";
+gift1.src = "asstets/gifts/giftbox1.png";
+gift2.src = "asstets/gifts/giftbox2.png";
+gift3.src = "asstets/gifts/giftbox3.png";
+gift4.src = "asstets/gifts/giftbox4.png";
+gift5.src = "asstets/gifts/giftbox5.png";
 
 export class Gift {
   constructor(x, y, type) {
@@ -63,6 +63,23 @@ export class Gift {
         console.log(game.player.gifts_thrown);
       }
     });
+
+    //Gift Touch Homes
+    for (let index = 0; index < game.gifts.length; index++) {
+      const gift = game.gifts[index];
+      game.homes.forEach((home, i) => {
+        if (
+          gift.x < home.x + home.size &&
+          gift.x + gift.size > home.x &&
+          gift.y < home.y + home.y &&
+          gift.y + gift.size > home.y
+        ) {
+          game.gifts.splice(index, 1);
+          game.homes.splice(i, 1);
+          game.player.gifts_distributed++;
+        }
+      });
+    }
   }
 
   draw(ctx) {

@@ -16,6 +16,7 @@ export class Player {
     this.bag = 5;
     this.gifts_distributed = 0;
     this.gifts_thrown = 0;
+    this.miss_homes = 0;
   }
   moves(game) {
     if (!game.pauza) {

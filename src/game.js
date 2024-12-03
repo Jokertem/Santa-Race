@@ -30,7 +30,7 @@ const scores = {
   last: null,
 };
 const startButton = {
-  x: game.width / 2 - 95,
+  x: game.width / 2 - 100,
   y: game.height / 2 + (100 - 65),
   width: 200,
   height: 50,
@@ -77,8 +77,10 @@ const Gifts = () => {
 };
 const Homes = () => {
   Home.render(game);
+  Home.remove(game);
   game.homes.forEach((home) => {
-    home.draw(game, ctx);
+    home.move(game);
+    home.draw(ctx);
   });
 };
 const Game = () => {

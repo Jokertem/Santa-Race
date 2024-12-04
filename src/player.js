@@ -1,10 +1,13 @@
 import { Gift } from "./gift.js";
+
+const santa = new Image();
+santa.src = "asstets/christmas.png";
 export class Player {
   constructor() {
     this.x = 160;
     this.y = 80;
-    this.width = 90;
-    this.height = 50;
+    this.width = 64;
+    this.height = 64;
     this.left = false;
     this.right = false;
     this.up = false;
@@ -41,8 +44,8 @@ export class Player {
     if (this.y <= 0) {
       this.y = 0;
     }
-    if (this.y + this.height >= game.height) {
-      this.y = game.height - this.height;
+    if (this.y + this.height >= game.height - 100) {
+      this.y = game.height - this.height - 100;
     }
   }
   increaseDistance(game) {
@@ -56,6 +59,10 @@ export class Player {
     setInterval(() => {
       if (game.start && !game.pauza) {
         this.energy--;
+        if (this.energy < 0) {
+          game.start = false;
+          game.lose = true;
+        }
       }
     }, 400);
   }
@@ -73,6 +80,6 @@ export class Player {
   }
 
   draw(ctx) {
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    ctx.drawImage(santa, this.x, this.y, this.width, this.height);
   }
 }

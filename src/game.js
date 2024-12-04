@@ -7,6 +7,8 @@ import { GetInfo } from "./gameinfo.js";
 import { Carrots } from "./carrots.js";
 import { Gift } from "./gift.js";
 import { Home } from "./home.js";
+import { Hazard } from "./hazard.js";
+import { Game_Over } from "./game_over.js";
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -17,13 +19,18 @@ const game = {
   height: ctx_Height,
   start: false,
   pauza: false,
+  lose: false,
+  hazards_speed: 4,
+  max_hazards: 5,
   stars: [],
   snow: [],
   carrots: [],
   gifts: [],
   homes: [],
+  hazards: [],
   player: new Player(),
   giftColor: Math.floor(Math.random() * 5 + 1),
+  saveDistance: 0,
 };
 const scores = {
   best: 20,
@@ -35,6 +42,23 @@ const startButton = {
   width: 200,
   height: 50,
   borderWidth: 3,
+};
+const resartButton = {
+  x: game.width / 2 - 100,
+  y: game.height / 2 + (100 - 25),
+  width: 200,
+  height: 50,
+  borderWidth: 3,
+};
+
+const SpeedUp_MaxHazardsUp = () => {
+  if (game.player.distance - game.saveDistance >= 100) {
+    console.log("SpeedUp");
+    game.saveDistance += 100;
+    game.hazards_speed += 0.4;
+    game.saveDistance += 100;
+    game.max_hazards++;
+  }
 };
 const Snowflakes = () => {
   game.snow.forEach((snow) => {
@@ -83,20 +107,35 @@ const Homes = () => {
     home.draw(ctx);
   });
 };
+const Hazards = () => {
+  game.hazards.forEach((hazard) => {
+    hazard.move(game);
+    hazard.draw(ctx);
+  });
+  Hazard.render(game);
+  Hazard.remove(game);
+};
 const Game = () => {
   ctx.clearRect(0, 0, ctx_Width, ctx_Height);
   Snowflakes();
-  if (!game.start) {
+  if (!game.start && !game.lose) {
     Start(ctx, game, scores, startButton);
-  } else {
+  } else if (game.start) {
     Stars();
     Santa();
     _Carrots();
     Gifts();
     Homes();
+    Hazards();
     GetInfo(game, ctx);
+    SpeedUp_MaxHazardsUp();
   }
+  if (game.lose && !game.start) {
+    Game_Over(game, ctx, scores, resartButton);
+  }
+
   requestAnimationFrame(Game);
 };
+
 Game();
-SetEvents(canvas, ctx, game, scores, startButton);
+SetEvents(canvas, ctx, game, scores, startButton, resartButton);

@@ -3,30 +3,32 @@ Create Game Board Done
 BackGround Done
 Stars Done
 Snow  Done
+Game Speed Up Done
+Game Hazard Max Up Done
 Start Viev Done
 Starting Game Done
-Starting New Game
+Starting New Game Done
 Pauza Done
-Losing
-Game Over Viev
+Losing Done
+Game Over Viev 
 Player Movement Done
 Set Distance Done
 Reindeer Energy Done
 Render Gifts Done
 Bag of Gifts Done
 Droping Gifts Done
-Render Homes
+Render Homes Done
 Droping Gifts Done
-Giving Gifts
+Giving Gifts Done
 Missing Gifts Done
 Render Carots Done
 Stars Counter Done
 Take Carrots Done
 Take Gifts Done
-Render Hazard
+Render Hazard Done
 Calculate Final Points
 Save Best Score(local storage)
-Grafics
+Grafics Done
 Audio
 
 

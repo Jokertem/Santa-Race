@@ -44,7 +44,6 @@ export class Home {
         element.x + element.size > element2.x
       ) {
         game.homes.splice(index, 1);
-        console.log("Keep distance");
       }
     }
   }
@@ -55,6 +54,33 @@ export class Home {
   }
 
   draw(ctx) {
-    ctx.drawImage(home1, this.x, this.y, this.size, this.size);
+    switch (this.color) {
+      case 1:
+        ctx.drawImage(home1, this.x, this.y, this.size, this.size);
+
+        break;
+      case 2:
+        ctx.drawImage(home2, this.x, this.y, this.size, this.size);
+
+        break;
+      case 3:
+        ctx.drawImage(home3, this.x, this.y, this.size, this.size);
+
+        break;
+      case 4:
+        ctx.drawImage(home4, this.x, this.y, this.size, this.size);
+
+        break;
+      case 5:
+        ctx.drawImage(home5, this.x, this.y, this.size, this.size);
+
+        break;
+      case 6:
+        ctx.drawImage(home6, this.x, this.y, this.size, this.size);
+
+        break;
+      default:
+        break;
+    }
   }
 }

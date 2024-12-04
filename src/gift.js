@@ -20,7 +20,7 @@ export class Gift {
   static render(game) {
     const rnd = Math.random() * 20;
     if (rnd < 0.05) {
-      const rndY = Math.floor(Math.random() * game.height);
+      const rndY = Math.floor(Math.random() * game.height - 100);
       if (rndY >= game.height) {
         rndY - size * 2;
       }
@@ -72,7 +72,8 @@ export class Gift {
           gift.x < home.x + home.size &&
           gift.x + gift.size > home.x &&
           gift.y < home.y + home.y &&
-          gift.y + gift.size > home.y
+          gift.y + gift.size > home.y &&
+          gift.type === "droped"
         ) {
           game.gifts.splice(index, 1);
           game.homes.splice(i, 1);

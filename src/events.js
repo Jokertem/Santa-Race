@@ -1,12 +1,37 @@
 import { Player } from "./player.js";
-export const SetEvents = (canvas, ctx, game, scores, startButton) => {
+export const SetEvents = (
+  canvas,
+  ctx,
+  game,
+  scores,
+  startButton,
+  resartButton
+) => {
   const SetPauza = () => {
     if (!game.start) {
       return;
     }
     game.pauza = !game.pauza;
   };
-
+  const StartGame = (game) => {
+    game.start = true;
+    game.player.x = 160;
+    game.player.y = 80;
+    game.player.points = 0;
+    game.player.bag = 5;
+    game.player.energy = 100;
+    game.player.gifts_distributed = 0;
+    game.player.gifts_thrown = 0;
+    game.player.miss_homes = 0;
+    game.player.distance = 0;
+    game.stars = [];
+    game.homes = [];
+    game.hazards = [];
+    game.gifts = [];
+    game.carrots = [];
+    game.start = true;
+    game.giftColor = Math.floor(Math.random() * 5 + 1);
+  };
   //Starting Game
   canvas.addEventListener("click", (e) => {
     const rect = canvas.getBoundingClientRect();
@@ -22,7 +47,18 @@ export const SetEvents = (canvas, ctx, game, scores, startButton) => {
         mousePos.y < startButton.y + startButton.height &&
         mousePos.y > startButton.y
       ) {
-        game.start = true;
+        StartGame(game);
+      }
+    }
+    //Restart
+    if (!game.start && game.lose) {
+      if (
+        mousePos.x < resartButton.x + resartButton.width &&
+        mousePos.x > resartButton.x &&
+        mousePos.y < resartButton.y + resartButton.height &&
+        mousePos.y > resartButton.y
+      ) {
+        StartGame(game);
       } else {
         return;
       }
@@ -33,13 +69,12 @@ export const SetEvents = (canvas, ctx, game, scores, startButton) => {
   //Keybord down events
   window.addEventListener("keydown", (e) => {
     const key = e.keyCode;
-    console.log(key);
     switch (key) {
       case 80:
         SetPauza();
         break;
       case 13:
-        game.start = true;
+        StartGame(game);
         break;
       case 38:
         game.player.up = true;
@@ -62,7 +97,7 @@ export const SetEvents = (canvas, ctx, game, scores, startButton) => {
   });
   window.addEventListener("keyup", (e) => {
     const key = e.keyCode;
-    console.log(key);
+
     switch (key) {
       case 38:
         game.player.up = false;

@@ -1,5 +1,6 @@
 const size = 32;
-
+const carrot = new Image();
+carrot.src = "asstets/carrot.png";
 export class Carrots {
   constructor(x, y) {
     (this.x = x), (this.y = y), (this.size = size), (this.speed = 3);
@@ -7,7 +8,7 @@ export class Carrots {
   static render(game) {
     const rnd = Math.random() * 20;
     if (rnd < 0.05 && game.carrots.length === 0) {
-      const rndY = Math.floor(Math.random() * game.height);
+      const rndY = Math.floor(Math.random() * game.height - 100);
       if (rndY + size >= game.height) {
         rndY - size * 2;
       }
@@ -39,7 +40,6 @@ export class Carrots {
     });
   }
   draw(ctx) {
-    ctx.fillStyle = "orange";
-    ctx.fillRect(this.x, this.y, this.size, this.size);
+    ctx.drawImage(carrot, this.x, this.y, this.size, this.size);
   }
 }

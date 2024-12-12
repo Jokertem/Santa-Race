@@ -31,11 +31,12 @@ const game = {
   player: new Player(),
   giftColor: Math.floor(Math.random() * 5 + 1),
   saveDistance: 0,
+  bestScore: 0,
 };
-const scores = {
-  best: 20,
-  last: null,
-};
+const item = localStorage.getItem("Santa Race Best");
+if (item) {
+  game.bestScore = item;
+}
 const startButton = {
   x: game.width / 2 - 100,
   y: game.height / 2 + (100 - 65),
@@ -119,7 +120,7 @@ const Game = () => {
   ctx.clearRect(0, 0, ctx_Width, ctx_Height);
   Snowflakes();
   if (!game.start && !game.lose) {
-    Start(ctx, game, scores, startButton);
+    Start(ctx, game, startButton);
   } else if (game.start) {
     Stars();
     Santa();
@@ -131,11 +132,11 @@ const Game = () => {
     SpeedUp_MaxHazardsUp();
   }
   if (game.lose && !game.start) {
-    Game_Over(game, ctx, scores, resartButton);
+    Game_Over(game, ctx, resartButton);
   }
 
   requestAnimationFrame(Game);
 };
 
 Game();
-SetEvents(canvas, ctx, game, scores, startButton, resartButton);
+SetEvents(canvas, ctx, game, startButton, resartButton);

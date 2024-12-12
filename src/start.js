@@ -1,4 +1,4 @@
-export const Start = (ctx, game, scores, startButton) => {
+export const Start = (ctx, game, startButton) => {
   ctx.font = "50px Arial";
   ctx.fillStyle = "red";
   ctx.textAlign = "center";
@@ -6,7 +6,7 @@ export const Start = (ctx, game, scores, startButton) => {
   ctx.textBaseline = "middle";
 
   ctx.fillText("Santa Race", game.width / 2, game.height / 2 - 65);
-  if (scores.best) {
+  if (game.bestScore > 0) {
     ctx.font = "26px Arial";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
@@ -14,7 +14,7 @@ export const Start = (ctx, game, scores, startButton) => {
     ctx.textBaseline = "middle";
 
     ctx.fillText(
-      `Your Best Score ${scores.best}`,
+      `Your Best Score ${game.bestScore}`,
       game.width / 2,
       game.height / 2 + 50 - 65
     );

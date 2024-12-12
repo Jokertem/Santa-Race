@@ -3,7 +3,7 @@ export const SetEvents = (
   canvas,
   ctx,
   game,
-  scores,
+
   startButton,
   resartButton
 ) => {
@@ -24,6 +24,7 @@ export const SetEvents = (
     game.player.gifts_thrown = 0;
     game.player.miss_homes = 0;
     game.player.distance = 0;
+    game.player.total = 0;
     game.stars = [];
     game.homes = [];
     game.hazards = [];
